@@ -1,0 +1,69 @@
+@import '@fontsource-variable/fraunces/full-italic.css';
+@import '@fontsource-variable/fraunces/full.css';
+@import '@fontsource-variable/figtree';
+@import 'tailwindcss';
+
+@theme {
+  --color-void: #07070f;
+  --color-panel: #11111f;
+  --color-rule: #2a2a44;
+  --color-ink: #efecf8;
+  --color-mist: #a5a1c4;
+  --color-gold: #ffd66b;
+  --color-history: #ff7a66;
+  --color-science: #4fd8eb;
+  --color-ideas: #a78bfa;
+  --color-geography: #5ee6a8;
+  --color-language: #ff7ab6;
+  --color-arts: #7c9cff;
+  --font-display: 'Fraunces Variable', Georgia, serif;
+  --font-body: 'Figtree Variable', sans-serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background: var(--color-void);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+/* Stars show focus as a ring, not the browser's rectangle around their label. */
+svg g[tabindex]:focus {
+  outline: none;
+}
+
+svg g[tabindex]:focus-visible > circle:first-child {
+  stroke: var(--color-gold);
+  stroke-width: 1.5;
+}
+
+.sky-sway {
+  animation: sky-sway 46s ease-in-out infinite alternate;
+}
+
+@keyframes sky-sway {
+  from {
+    transform: rotate(-0.8deg);
+  }
+  to {
+    transform: rotate(0.8deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sky-sway {
+    animation: none;
+  }
+}

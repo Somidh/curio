@@ -1,0 +1,17 @@
+{
+  "name": "@curio/db",
+  "private": true,
+  "type": "module",
+  "exports": "./src/index.ts",
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@curio/core": "workspace:*",
+    "better-sqlite3": "^11.7.0",
+    "drizzle-orm": "^0.38.3"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^9.6.0"
+  }
+}

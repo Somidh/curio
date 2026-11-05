@@ -1,0 +1,35 @@
+{
+  "name": "curio",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.7.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "switch:init": "node scripts/init-switch-env.mjs",
+    "switch:up": "docker compose -f infra/docker-compose.yml --env-file infra/.env up -d",
+    "switch:down": "docker compose -f infra/docker-compose.yml --env-file infra/.env down",
+    "switch:key": "node scripts/create-registration-key.mjs",
+    "bootstrap": "tsx --env-file=.env scripts/bootstrap.ts",
+    "dev": "concurrently -n server,web -c yellow,cyan \"pnpm --filter @curio/server dev\" \"pnpm --filter @curio/web dev\"",
+    "test": "vitest run",
+    "typecheck": "pnpm -r typecheck"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "concurrently": "^9.1.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^3.0.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "better-sqlite3",
+      "esbuild"
+    ]
+  },
+  "dependencies": {
+    "@curio/switch-client": "workspace:*"
+  }
+}
